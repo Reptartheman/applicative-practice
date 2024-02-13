@@ -10,10 +10,16 @@
 
 
 export function find(array, callback) {
-  // Your code goes here...
-  
+
+  for (let el of array) {
+    if (callback(el)) {
+      return el;
+    }
+  }
 }
 
+
+//I am confused about what the callback is 
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-16"

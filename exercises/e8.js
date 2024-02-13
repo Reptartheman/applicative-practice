@@ -5,7 +5,14 @@ import { data } from "../data/data";
 // Return example: 'Planet Name'
 
 export function findPlanetNameByMoon(data, moonName) {
-  // Your code goes here...
+  const planets = data.planets;
+  let specificPlanet = planets
+  .find((planet) => {
+    if (planet.hasOwnProperty('moons') && planet.moons.includes(moonName)) {
+      return planet.name;
+    }
+  })
+  return specificPlanet.name;
 }
 
 

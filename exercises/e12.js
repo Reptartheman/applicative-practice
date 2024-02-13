@@ -5,7 +5,20 @@ import { data } from "../data/data";
 // Return example: 42
 
 export function allPlanetsMoonsCount(data) {
-  // Your code goes here...
+  const planets = data.planets;
+  let sumOfMoons = planets
+  .filter((planet) => {
+    if (planet.hasOwnProperty('moonsCount')) {
+      return planet.moonsCount;
+    }
+  })
+  .map((planet) => {
+    return planet.moonsCount;
+  })
+  .reduce((accum, val) => {
+    return accum + val;
+  })
+  return sumOfMoons;
 }
 
 
