@@ -8,7 +8,7 @@ export function getEarthData(data) {
   const planets = data.planets;
   let planetEarth = planets
   .find((planet) => {
-    if (planet.name === 'Earth') {
+    if (planet.id === 'earth') {
       return planet;
     }
   })

@@ -13,14 +13,16 @@ export function getGreatestDiscoveryYear(data) {
     hashMap[asteroid.discoveryYear] = (hashMap[asteroid.discoveryYear] ?? 0) + 1;
     // set the key to be the asteroid's discovery year and increment the count each time that year occurs
   }
-  let yearsCount = Object.entries(hashMap);//converts object to an array of arrays [year, count] pairs
-  let maxCount = 3; //set maximum amount of times the year shows up to 3
-  for (let [year, count] of yearsCount) {//for every [key, value] pair in our yearsCount array
-    if (count === maxCount) {//check if the [count] is equal to our maxCount variable
-      return parseInt([year]);//then take that [year] as a string and turn it into a number
-    }
-  }
+  let yearsCount = Object.entries(hashMap);//returns an array of arrays with [year, count] pairs
+  let maxCountElement = maxBy(yearsCount, (element) => element[1]);
+  //element[1] represents the [count] of our [year, count] pair
+  let maxYear = maxCountElement[0];//this represents the [year] in our [year, count] pair
+  return parseInt(maxYear);//parse the year into a number
 }
+
+//I need to see if the value is greater than the previous value and then return the year
+
+
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-18"
