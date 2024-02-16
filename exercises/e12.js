@@ -5,23 +5,13 @@ import { data } from "../data/data";
 // Return example: 42
 
 export function allPlanetsMoonsCount(data) {
-  const planets = data.planets;
-  let sumOfMoons = planets
-  .filter((planet) => {
-    if (planet.hasOwnProperty('moonsCount')) {
-      return planet.moonsCount;
+  return data.planets.reduce((acc, planet) => {
+    if (planet.moons) {
+      acc += planet.moons.length;
     }
-  })
-  .map((planet) => {
-    return planet.moonsCount;
-  })
-  .reduce((accum, val) => {
-    return accum + val;
-  })
-  return sumOfMoons;
+    return acc;
+  }, 0);
 }
-
-
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-12"

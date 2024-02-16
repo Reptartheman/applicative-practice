@@ -9,32 +9,22 @@
  */
 
 export function minBy(array, cb) {
-  if (Array.isArray(array) && array.length === 0) {
-    return undefined;
-  }
-  let min = cb(array[0]);
-  let value;
+  let lowest = array[0]
   for (let el of array) {
-    if (cb(el) < min) {
-      min = cb(el);
-      value = el;
+    if (cb(el) < cb(lowest)) {
+        lowest = el;
     }
   }
-  return value;
+  return lowest;
 }
 export function maxBy(array, cb) {
-  if (Array.isArray(array) && array.length === 0) {
-    return undefined;
-  }
-  let max = cb(array[0]);
-  let value;
+  let highest = array[0]
   for (let el of array) {
-    if (cb(el) > max) {
-      max = cb(el);
-      value = el;
+    if (cb(el) > cb(highest)) {
+        highest = el;
     }
   }
-  return value;
+  return highest;
 }
 
 // === TEST YOURSELF ===

@@ -7,20 +7,23 @@ import { maxBy } from "./e17";
  */
 
 export function getGreatestDiscoveryYear(data) {
-  const asteroids = data.asteroids;//declare asteroids variable
-  const hashMap = {};//declare empty object
-  for (let asteroid of asteroids) {//loop through asteroids array
-    hashMap[asteroid.discoveryYear] = (hashMap[asteroid.discoveryYear] ?? 0) + 1;
-    // set the key to be the asteroid's discovery year and increment the count each time that year occurs
+  const yearsCount = data.asteroids.reduce((counts, asteroid) => {
+    const year = asteroid.discoveryYear;
+    counts[year] = (counts[year] || 0) + 1;
+    return counts;
+  }, {});
+
+  let maxYear = null;
+  let maxCount = 0;
+  for (const year in yearsCount) {
+    if (yearsCount[year] > maxCount) {
+      maxCount = yearsCount[year];
+      maxYear = parseInt(year);
+    }
   }
-  let yearsCount = Object.entries(hashMap);//returns an array of arrays with [year, count] pairs
-  let maxCountElement = maxBy(yearsCount, (element) => element[1]);
-  //element[1] represents the [count] of our [year, count] pair
-  let maxYear = maxCountElement[0];//this represents the [year] in our [year, count] pair
-  return parseInt(maxYear);//parse the year into a number
+  return maxYear;
 }
 
-//I need to see if the value is greater than the previous value and then return the year
 
 
 

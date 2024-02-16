@@ -5,14 +5,12 @@ import { data } from "../data/data";
 // Return example: { key1: value1, key2: value2, ... , keyN: valueN }
 
 export function getAsteroidDataByName(data, asteroidName) {
-  const asteroids = data.asteroids;
-  let asteroidData = asteroids
+  return data.asteroids
   .find((asteroid) => {
     if (asteroid.hasOwnProperty('name') && asteroid.name.includes(asteroidName)) {
       return asteroid.name;
     }
   })
-  return asteroidData;
 }
 
 
